@@ -68,7 +68,7 @@
         ['onStart', 'onEnd', 'onRemove', 'onAdd', 'onUpdate', 'onSort', 'onFilter', 'onMove', 'onClone'].forEach(function (e) {
             if (options[e] || eventHandlers[e])
                 options[e] = function (eventType, parentVM, parentBindings, handler, e) {
-                    var itemVM = ko.dataFor(e.item),
+                    var itemVM = ko.dataFor(e.item || e.dragged),
                         // All of the bindings on the parent element
                         bindings = ko.utils.peekObservable(parentBindings()),
                         // The binding options for the draggable/sortable binding of the parent element
