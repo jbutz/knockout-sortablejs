@@ -40,7 +40,7 @@
 			});
 		}
 		else if (koRef === undefined && sortableRef === undefined) {
-			define(['knockout', './Sortable'], factory);
+			define('knockout-sortable', ['knockout', './Sortable'], factory);
 		}
 	}
 	//no more routes to get references
