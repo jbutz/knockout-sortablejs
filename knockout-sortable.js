@@ -87,9 +87,9 @@
 		var disableListener;
 		if(options.hasOwnProperty('disabled')) {
 			disableListener = ko.computed(function() {
-				var updatedOptions = buildOptions(valueAccessor, sortableOptions);
+				var isDisabled = ko.unwrap(options.disabled);
 
-				sortableElement.option('disabled', updatedOptions.disabled);
+				sortableElement.option('disabled', isDisabled);
 			});
 		}
 
