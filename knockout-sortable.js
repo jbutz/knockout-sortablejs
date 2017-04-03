@@ -84,9 +84,19 @@
 
         var sortableElement = Sortable.create(element, options);
 
+		var disableListener;
+		if(options.hasOwnProperty('disabled')) {
+			disableListener = ko.computed(function() {
+				var updatedOptions = buildOptions(valueAccessor, sortableOptions);
+
+				sortableElement.option('disabled', updatedOptions.disabled);
+			});
+		}
+
         // Destroy the sortable if knockout disposes the element it's connected to
         ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
             sortableElement.destroy();
+			disableListener && disableListener.dispose();
         });
         return ko.bindingHandlers.template.init(element, valueAccessor);
     },
